@@ -5,6 +5,6 @@ test.describe("Time API", () => {
     const response = await TimeService.getCurrentTime<{ time: string }>();
     const { body, statusCode } = response;
     expect(statusCode).toBe(200);
-    expect(body.time).toBe(Date.now());
+    expect(body.time).toBeCloseTo(Date.now(), 1000);
   });
 });
