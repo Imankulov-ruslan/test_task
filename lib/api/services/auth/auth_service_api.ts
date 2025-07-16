@@ -1,12 +1,13 @@
-import { APIRequest, APIRequestContext } from "@playwright/test";
-import { ApiResponse } from "../interfaces/api_response";
-import { json } from "stream/consumers";
+import { APIRequestContext } from "@playwright/test";
+import { ApiResponse } from "../../interfaces/api_response";
+import { BaseService } from "../base_service";
 
-export class AuthService {
+export class AuthService extends BaseService {
   loginUri: string;
   logoutUri: string;
 
   constructor(public request: APIRequestContext) {
+    super();
     this.loginUri = "login";
     this.logoutUri = "logout";
   }

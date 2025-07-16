@@ -40,13 +40,6 @@ export default defineConfig({
       },
       dependencies: ["setup"],
     },
-    {
-      name: "auth",
-      testMatch: /.*\.auth\.spec\.ts/,
-      use: {
-        ...devices["Desktop Chrome"],
-      },
-    },
 
     // {
     //   name: 'firefox',

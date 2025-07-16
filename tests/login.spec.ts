@@ -26,6 +26,7 @@ test.describe("Auth user", () => {
     expect(body.message).toEqual("Wrong login or password");
     expect(headers["set-cookie"]).not.toBeDefined();
   });
+
   test("incorrect login as number", async ({ AuthServiceWithoutCookies }) => {
     const reponse = await AuthServiceWithoutCookies.login<
       { message: string },
@@ -37,6 +38,7 @@ test.describe("Auth user", () => {
     expect(body.message).toEqual("Wrong login or password");
     expect(headers["set-cookie"]).not.toBeDefined();
   });
+  
   test("short password", async ({ AuthServiceWithoutCookies }) => {
     const reponse = await AuthServiceWithoutCookies.login<{ message: string }>(
       validUsername,

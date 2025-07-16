@@ -1,5 +1,5 @@
 import { APIRequestContext, test as base } from "@playwright/test";
-import { AuthService } from "../services/auth_service_api";
+import { AuthService } from "../services/auth/auth_service_api";
 type ApiObjectFixtures = {
   AuthService: AuthService;
   AuthServiceWithoutCookies: AuthService;
