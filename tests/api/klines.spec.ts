@@ -3,6 +3,7 @@ import { KlineIntervals } from "../../lib/api/enums/klines";
 import { Symbols } from "../../lib/api/enums/symbols";
 import { test, expect } from "../../lib/api/fixtures/api";
 import { TimestampComparator } from "../../lib/api/helpers/timestamp";
+import { time } from "console";
 
 test.describe("Klines API", () => {
   Object.values(KlineIntervals).forEach((interval) => {
@@ -94,13 +95,13 @@ test.describe("Klines API", () => {
     });
   }
 
-  const now = Math.floor(Date.now() / 1000); // current time in seconds
+  const now = Math.floor(Date.now() / 1000);
 
   const testData = {
-    timestamp_gt: now + 60, // 1 minute in the future
-    timestamp_gte: now, // now
-    timestamp_lt: now - 60, // 1 minute in the past
-    timestamp_lte: now, // now (same as gte for equality check)
+    timestamp_gt: now + 60,
+    timestamp_gte: now, 
+    timestamp_lt: now - 60,
+    timestamp_lte: now,
   };
 
   for (const key in testData) {
@@ -117,4 +118,14 @@ test.describe("Klines API", () => {
       }
     });
   }
+
+  test("non intersected timestamps", async ({ KlinesService }) => { 
+    const response = await KlinesService.get(
+      { symbol: Symbols.BTCUSDT, interval: KlineIntervals["1s"] },
+      { timestamp_gt: testData.timestamp_gt, timestamp_lt: testData.timestamp_lt },
+    );
+    const { body, statusCode } = response;
+    expect(statusCode).toBe(200);
+    expect(body.items).toHaveLength(0);
+  })
 });
