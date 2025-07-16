@@ -23,5 +23,4 @@
 
 
 ### View HTML test report
-After running tests, open the report:
     npx playwright show-report
