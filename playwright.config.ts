@@ -50,6 +50,16 @@ export default defineConfig({
       },
       dependencies: ["setup"],
     },
+    {
+      name: "Websocket Service",
+      testDir: "./tests/websocket_api",
+      use: {
+        baseURL: "http://47.91.23.134:8084/ws",
+        ...devices["Desktop Chrome"],
+        storageState: "playwright/.auth/user.json",
+      },
+      dependencies: ["setup"],
+    },
 
     // {
     //   name: 'firefox',
