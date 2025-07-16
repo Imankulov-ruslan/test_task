@@ -5,7 +5,7 @@ export class BaseService {
   constructor() {}
 
   async processResponse<T = object>(
-    response: APIResponse & { headers: object },
+    response: APIResponse & { headers?: object },
   ): Promise<ApiResponse> {
     const contentType = response.headers()["content-type"] || "";
     let responseData = null as T;
