@@ -2,6 +2,7 @@ import { APIRequestContext, test as base } from "@playwright/test";
 import { AuthService } from "../services/auth/auth_service_api";
 import { TimeService } from "../services/time/time_service_api";
 import { KlinesService } from "../services/klines/klines_service_api";
+
 type ApiObjectFixtures = {
   AuthService: AuthService;
   TimeService: TimeService;

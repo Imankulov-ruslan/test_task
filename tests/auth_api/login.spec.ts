@@ -1,5 +1,6 @@
 import { test, expect } from "../../lib/api/fixtures/api";
 import { faker } from "@faker-js/faker";
+
 test.describe("Auth user", () => {
   const validUsername = process.env.USERNAME!;
   const validPassword = process.env.PASSWORD!;

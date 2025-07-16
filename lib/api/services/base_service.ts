@@ -5,8 +5,8 @@ export class BaseService {
   constructor() {}
 
   async processResponse<T = object>(
-    response: APIResponse & { headers?: object },
-  ): Promise<ApiResponse> {
+    response: APIResponse,
+  ): Promise<ApiResponse & { headers: object }> {
     const contentType = response.headers()["content-type"] || "";
     let responseData = null as T;
     if (contentType.includes("application/json")) {
@@ -16,6 +16,6 @@ export class BaseService {
     } else {
       console.warn("Unknown content type:", contentType);
     }
-    return { body: responseData, statusCode: response.status() };
+    return { body: responseData, statusCode: response.status(), headers: response.headers() };
   }
 }

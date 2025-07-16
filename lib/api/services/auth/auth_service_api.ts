@@ -15,7 +15,7 @@ export class AuthService extends BaseService {
   async login<T = object, K = string, Z = string>(
     username: K,
     password: Z,
-  ): Promise<ApiResponse & { headers?: object }> {
+  ): Promise<ApiResponse & { headers: object }> {
     const response = await this.request.post(`/${this.loginUri}`, {
       data: { login: username, password },
     });
