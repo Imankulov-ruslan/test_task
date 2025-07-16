@@ -12,6 +12,6 @@ export class TimeService extends BaseService {
 
   async getCurrentTime<T = object>(): Promise<ApiResponse> {
     const response = await this.request.get(`/${this.uri}`);
-    return this.processResponse<T>(response);   
+    return this.processResponse<T>(response);
   }
 }

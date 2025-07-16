@@ -4,7 +4,9 @@ import { ApiResponse } from "../interfaces/api_response";
 export class BaseService {
   constructor() {}
 
-  async processResponse<T = object>(response: APIResponse & { headers: object }): Promise<ApiResponse> {
+  async processResponse<T = object>(
+    response: APIResponse & { headers: object },
+  ): Promise<ApiResponse> {
     const contentType = response.headers()["content-type"] || "";
     let responseData = null as T;
     if (contentType.includes("application/json")) {
