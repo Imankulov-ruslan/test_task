@@ -1,4 +1,4 @@
 export interface ApiResponse {
-    body: any,
-    statusCode: number,
+  body: any;
+  statusCode: number;
 }

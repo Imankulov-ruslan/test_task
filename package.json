@@ -2,7 +2,10 @@
   "name": "test_task",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "run_prettier": "prettier --write \"**/*.{ts,js,json}\"",
+    "test:ui": "npx playwright test --ui"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
@@ -12,6 +15,7 @@
     "@types/node": "^24.0.14"
   },
   "dependencies": {
-    "dotenv": "^17.2.0"
+    "dotenv": "^17.2.0",
+    "prettier": "^3.6.2"
   }
 }
