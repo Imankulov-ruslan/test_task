@@ -18,14 +18,18 @@ export class AuthService {
         return {body: await response.json() as T, statusCode: response.status(), headers: response.headers()}
     }
 
-    async logout<T = object | string>(): Promise<ApiResponse>{
-        const response = await this.request.post(`/${this.logoutUri}`)
-        let body: T
-        try {
-            body = await response.json() as T
-        } catch (error) {
-            body = await response.text() as T
+    async logout<T = object | string | null>(headers?: { [key: string]: string; }): Promise<ApiResponse>{
+        const response = await this.request.post(`/${this.logoutUri}`, { headers })
+        const contentType = response.headers()['content-type'] || '';
+        let responseData = null as T
+        if (contentType.includes('application/json')) {
+            responseData = await response.json() as T;
+        } else if (contentType.includes('text/plain')) {
+            responseData = await response.text() as T;
+        } else {
+            console.warn('Unknown content type:', contentType);
         }
-        return {body, statusCode: response.status()}
+        return {body: responseData, statusCode: response.status()}
     }
+    
 }

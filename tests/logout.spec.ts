@@ -2,11 +2,21 @@ import { test, expect } from '../lib/api/fixtures/api';
 import { faker } from '@faker-js/faker';
 import {request} from '@playwright/test'
 test.describe('Auth user', () => {
-    test('logout', async ({ AuthService}) => {
-      const reponse = await AuthService.logout<{message:string}>()
-      const {body, statusCode} = reponse
-      console.log(reponse)
+    test('double logout', async ({ AuthService}) => {
+      let reponse = await AuthService.logout()
+      let statusCode = reponse.statusCode
+      expect(statusCode).toBe(204)
+      
+      reponse = await AuthService.logout()
+      statusCode = reponse.statusCode
+      expect(statusCode).toBe(401)
+  });
 
+    test('logout with invalid token', async ({ AuthServiceWithoutCookies}) => {
+      const response = await AuthServiceWithoutCookies.logout<{message: string}>({ 'Cookie': 'access_token=invalid' })
+      const {body, statusCode} = response
+      expect(body.message).toBe('Auth error: InvalidToken')
+      expect(statusCode).toBe(401)
   });
 })
 
