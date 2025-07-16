@@ -22,7 +22,6 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: "http://47.91.23.134:8081",
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: "on-first-retry",
@@ -32,13 +31,21 @@ export default defineConfig({
   projects: [
     { name: "setup", testMatch: /.*\.setup\.ts/ },
     {
-      name: "chromium",
+      name: "Auth Service",
+      testDir: "./tests/auth_api",
       use: {
+        baseURL: "http://47.91.23.134:8081",
         ...devices["Desktop Chrome"],
-        // Use prepared auth state.
-        storageState: "playwright/.auth/user.json",
       },
       dependencies: ["setup"],
+    },
+    {
+      name: "Api Service",
+      testDir: "./tests/api",
+      use: {
+        baseURL: "http://47.91.23.134:8083",
+        ...devices["Desktop Chrome"],
+      },
     },
 
     // {

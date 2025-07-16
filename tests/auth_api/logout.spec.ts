@@ -1,6 +1,5 @@
-import { test, expect } from "../lib/api/fixtures/api";
-import { faker } from "@faker-js/faker";
-import { request } from "@playwright/test";
+import { test, expect } from "../../lib/api/fixtures/api";
+
 test.describe("Auth user", () => {
   test("double logout", async ({ AuthService }) => {
     let reponse = await AuthService.logout();
