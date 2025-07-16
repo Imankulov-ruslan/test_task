@@ -3,7 +3,6 @@ import { ApiResponse } from "../../interfaces/api_response";
 import { BaseService } from "../base_service";
 import { KlineIntervals } from "../../enums/klines";
 
-
 export class KlinesService extends BaseService {
   uri: string;
 
@@ -12,8 +11,13 @@ export class KlinesService extends BaseService {
     this.uri = "klines";
   }
 
-  async get<T = object>(queryParams: {symbol: string, interval: KlineIntervals}, optionalQueryParams?: object): Promise<ApiResponse> {
-    const response = await this.request.get(`/${this.uri}`, { params: { ...queryParams, ...optionalQueryParams } });
+  async get<T = object>(
+    queryParams: { symbol: string; interval: KlineIntervals },
+    optionalQueryParams?: object,
+  ): Promise<ApiResponse> {
+    const response = await this.request.get(`/${this.uri}`, {
+      params: { ...queryParams, ...optionalQueryParams },
+    });
     return this.processResponse<T>(response);
   }
 }

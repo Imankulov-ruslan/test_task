@@ -1,4 +1,4 @@
 export enum Symbols {
-    BTCUSDT = "BTCUSDT",
-    BTCETH = "BTCETH",
+  BTCUSDT = "BTCUSDT",
+  BTCETH = "BTCETH",
 }
