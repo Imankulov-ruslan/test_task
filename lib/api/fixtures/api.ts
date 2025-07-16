@@ -1,9 +1,11 @@
 import { APIRequestContext, test as base } from "@playwright/test";
 import { AuthService } from "../services/auth/auth_service_api";
 import { TimeService } from "../services/time/time_service_api";
+import { KlinesService } from "../services/klines/klines_service_api";
 type ApiObjectFixtures = {
   AuthService: AuthService;
   TimeService: TimeService;
+  KlinesService: KlinesService;
   AuthServiceWithoutCookies: AuthService;
   requestWithCookie: APIRequestContext;
 };
@@ -25,6 +27,9 @@ export const test = base.extend<ApiObjectFixtures>({
   },
   TimeService: async ({ request }, use) => {
     await use(new TimeService(request));
+  },
+  KlinesService: async ({ requestWithCookie }, use) => {
+    await use(new KlinesService(requestWithCookie));
   },
   AuthServiceWithoutCookies: async ({ request }, use) => {
     await use(new AuthService(request));
