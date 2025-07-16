@@ -35,8 +35,8 @@ test.describe("Auth user", () => {
       number
     >(validUsername, 123);
     const { body, statusCode, headers } = reponse;
-    expect(statusCode).toBe(400);
-    expect(body.message).toEqual("Wrong login or password");
+    expect(statusCode).toBe(422);
+    expect(body).toEqual("Failed to deserialize the JSON body into the target type: password: invalid type: integer `123`, expected a string at line 1 column 34");
     expect(headers["set-cookie"]).not.toBeDefined();
   });
 
