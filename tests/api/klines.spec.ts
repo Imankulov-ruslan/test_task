@@ -6,6 +6,16 @@ import { TimestampComparator } from "../../lib/api/helpers/timestamp";
 import { time } from "console";
 
 test.describe("Klines API", () => {
+  test('unauthenticated request', async ({ KlinesService }) => {
+    const response = await KlinesService.get({
+      symbol: Symbols.BTCUSDT,
+      interval: KlineIntervals["1s"],
+    }, {}, {"Cookie": ""});
+    const { body, statusCode } = response;
+    expect(statusCode).toBe(401);
+    expect(body.message).toBe("Cookie missing");
+  });
+
   Object.values(KlineIntervals).forEach((interval) => {
     test(`schema for ${interval} interval`, async ({ KlinesService }) => {
       const response = await KlinesService.get({

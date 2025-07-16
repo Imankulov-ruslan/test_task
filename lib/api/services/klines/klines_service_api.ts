@@ -14,9 +14,11 @@ export class KlinesService extends BaseService {
   async get<T = object>(
     queryParams: { symbol: string; interval: KlineIntervals },
     optionalQueryParams?: object,
+    headers?: { [key: string]: string }
   ): Promise<ApiResponse> {
     const response = await this.request.get(`/${this.uri}`, {
       params: { ...queryParams, ...optionalQueryParams },
+      headers,
     });
     return this.processResponse<T>(response);
   }
