@@ -16,6 +16,10 @@ export class BaseService {
     } else {
       console.warn("Unknown content type:", contentType);
     }
-    return { body: responseData, statusCode: response.status(), headers: response.headers() };
+    return {
+      body: responseData,
+      statusCode: response.status(),
+      headers: response.headers(),
+    };
   }
 }

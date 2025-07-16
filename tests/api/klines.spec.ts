@@ -4,11 +4,15 @@ import { test, expect } from "../../lib/api/fixtures/api";
 import { TimestampComparator } from "../../lib/api/helpers/timestamp";
 
 test.describe("Klines API", () => {
-  test('unauthenticated request', async ({ KlinesService }) => {
-    const response = await KlinesService.get({
-      symbol: Symbols.BTCUSDT,
-      interval: KlineIntervals["1s"],
-    }, {}, {"Cookie": ""});
+  test("unauthenticated request", async ({ KlinesService }) => {
+    const response = await KlinesService.get(
+      {
+        symbol: Symbols.BTCUSDT,
+        interval: KlineIntervals["1s"],
+      },
+      {},
+      { Cookie: "" },
+    );
     const { body, statusCode } = response;
     expect(statusCode).toBe(401);
     expect(body.message).toBe("Cookie missing");
@@ -107,7 +111,7 @@ test.describe("Klines API", () => {
 
   const testData = {
     timestamp_gt: now + 60,
-    timestamp_gte: now, 
+    timestamp_gte: now,
     timestamp_lt: now - 60,
     timestamp_lte: now,
   };
@@ -127,13 +131,16 @@ test.describe("Klines API", () => {
     });
   }
 
-  test("non intersected timestamps", async ({ KlinesService }) => { 
+  test("non intersected timestamps", async ({ KlinesService }) => {
     const response = await KlinesService.get(
       { symbol: Symbols.BTCUSDT, interval: KlineIntervals["1s"] },
-      { timestamp_gt: testData.timestamp_gt, timestamp_lt: testData.timestamp_lt },
+      {
+        timestamp_gt: testData.timestamp_gt,
+        timestamp_lt: testData.timestamp_lt,
+      },
     );
     const { body, statusCode } = response;
     expect(statusCode).toBe(200);
     expect(body.items).toHaveLength(0);
-  })
+  });
 });
