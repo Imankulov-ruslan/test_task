@@ -5,7 +5,9 @@
   "scripts": {
     "run_prettier": "prettier --write \"**/*.{ts,js,json}\"",
     "test:ui": "npx playwright test --ui",
-    "run_linter": "npx eslint"
+    "run_linter": "npx eslint",
+    "test": "npx playwright test",
+    "show-report": "npx playwright show-report"
   },
   "author": "",
   "license": "ISC",
