@@ -12,6 +12,8 @@ Pre-requsistes:
     npm install
 3. **Install browsers**
     npx playwright install
+4. **Fill secrets**
+    Rename ".env.example" file to ".env" and fill secrets
 
 ## Running Tests
 
