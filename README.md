@@ -5,8 +5,10 @@
 Сервис с вебсокетами у меня не работал, не смог подебажить и запустить тесты.
 ## Getting Started
 Pre-requsistes:
-- Node js v22.14.0 installed
+- Node js v22.14.0
+- TypeScript v5.8.3
 
+Steps to set-up framework
 1. **Clone the repository**
 2. **Install dependencies**
     npm install
