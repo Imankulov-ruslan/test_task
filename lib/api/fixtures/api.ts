@@ -1,8 +1,8 @@
 import { APIRequestContext, test as base } from "@playwright/test";
-import { AuthService } from "../services/auth/auth_service_api";
-import { TimeService } from "../services/time/time_service_api";
-import { KlinesService } from "../services/klines/klines_service_api";
-import { WebSocketSubscription } from "../services/websocket/websocket_api";
+import { AuthService } from "@services/auth/auth_service_api";
+import { TimeService } from "@services/time/time_service_api";
+import { KlinesService } from "@services/klines/klines_service_api";
+import { WebSocketSubscription } from "@services/websocket/websocket_api";
 import { WebSocket } from "ws";
 
 type ApiObjectFixtures = {

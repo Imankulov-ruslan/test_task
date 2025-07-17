@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "baseUrl": ".",
+      "paths": {
+        "@interfaces/*": ["lib/api/interfaces/*"],
+        "@helpers/*": ["lib/api/helpers/*"],
+        "@fixtures/*": ["lib/api/fixtures/*"],
+        "@services/*": ["lib/api/services/*"],
+        "@enums/*": ["lib/api/enums/*"],
+      } 
+    }
+}

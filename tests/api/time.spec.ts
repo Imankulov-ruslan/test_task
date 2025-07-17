@@ -1,4 +1,4 @@
-import { test, expect } from "../../lib/api/fixtures/api";
+import { test, expect } from "@fixtures/api";
 
 test.describe("Time API", () => {
   test("get current time", async ({ TimeService }) => {

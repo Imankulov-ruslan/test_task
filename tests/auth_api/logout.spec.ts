@@ -1,4 +1,4 @@
-import { test, expect } from "../../lib/api/fixtures/api";
+import { test, expect } from "@fixtures/api";
 
 test.describe("Auth user", () => {
   test("double logout", async ({ AuthService }) => {

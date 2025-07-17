@@ -1,7 +1,7 @@
-import { KlineIntervals } from "../../lib/api/enums/klines";
-import { Symbols } from "../../lib/api/enums/symbols";
-import { test, expect } from "../../lib/api/fixtures/api";
-import { TimestampComparator } from "../../lib/api/helpers/timestamp";
+import { KlineIntervals } from "@enums/klines";
+import { Symbols } from "@enums/symbols";
+import { test, expect } from "@fixtures/api";
+import { TimestampComparator } from "@helpers/timestamp";
 
 test.describe("Klines API", () => {
   test("unauthenticated request", async ({ KlinesService }) => {

@@ -1,4 +1,4 @@
-import { test } from "../../lib/api/fixtures/api";
+import { test } from "@fixtures/api";
 
 test.describe("WebSocket API", () => {
   test("WebSocket connection", async ({ WebSocketService }) => {
